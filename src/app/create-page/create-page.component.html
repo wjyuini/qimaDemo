@@ -1,0 +1,22 @@
+<div class="content">
+  <a [routerLink]="['mainPage']">main page</a>
+
+  <div style="padding:10px 0;">
+    <span>Status name: </span>
+    <input dTextInput style="width: 200px;" [(ngModel)]='addStatusName' (ngModelChange)="inputChange()"
+      placeholder="new status name" id="textInput" />
+    <div *ngIf='isExist' style="color: red;">The status name status should not be duplicated base on the name</div>
+  </div>
+
+  <div>
+    Could be transferred to :
+    <div style="width: 120px;">
+      <d-select [options]="statusOptions" [multiple]="true" [isSelectAll]="true" [filterKey]="'name'"
+        [(ngModel)]='currentStatus' [placeholder]="'Select a status'"></d-select>
+    </div>
+  </div>
+
+  <div style="margin-top: 10px;">
+    <d-button bsStyle="common" (btnClick)='createStatus()'>Create Status</d-button>
+  </div>
+</div>

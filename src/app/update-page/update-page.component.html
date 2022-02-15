@@ -1,0 +1,20 @@
+<div class="content">
+  <a class="devui-link" [routerLink]="['mainPage']">main page</a>
+
+  <div style="padding:10px 0;">
+    <span>Status name: {{currentStatus}}</span>
+    <a class="pl10 devui-link" (click)="deleteStaus()">delete</a>
+  </div>
+
+  <div>
+    Could be transferred to :
+    <div style="width: 120px;">
+      <d-select [options]="statusOptions" [multiple]="true" [isSelectAll]="true" [isSearch]="true" [filterKey]="'name'"
+        [(ngModel)]='selectStatus' [placeholder]="'Select a status'"></d-select>
+    </div>
+  </div>
+  <div style="margin-top: 10px;">
+    <d-button bsStyle="common" (btnClick)='updateStaus()'>Update Status</d-button>
+    <span></span>
+  </div>
+</div>

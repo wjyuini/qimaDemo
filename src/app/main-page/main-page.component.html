@@ -1,0 +1,45 @@
+<div class="content">
+  <div class="pb10">
+    <span style="margin-right: 10px;">Current status is {{ currentStatus?.name | json }}</span>
+    <d-button bsStyle="common" (btnClick)='toCreateStatus()'>Create Status</d-button>
+  </div>
+
+  <div class="pb10">
+    Update status:
+    <div style="width: 120px;display: inline-block;margin-left: 10px;">
+      <d-select [options]="statusOptions" [isSearch]="true" [filterKey]="'name'" [placeholder]="'Select a status'"
+        (valueChange)='statusChange($event)'></d-select>
+    </div>
+    <span></span>
+  </div>
+
+  <div class="pb10">
+    <span>Could be transferred to</span>
+    <div style="width: 120px;display: inline-block;margin-left: 10px;">
+      <d-select [options]="statusOptions" (valueChange)='transferred1Change($event)' [(ngModel)]='transferred1'
+        [isSearch]="true" [filterKey]="'name'" [placeholder]="'Select a status'">
+      </d-select>
+    </div>
+    <div *ngIf='!!answer1Msg'>{{answer1Msg}}</div>
+  </div>
+
+  <div class="pb10">
+    <span>How could be transferred to</span>
+    <div style="width: 120px;display: inline-block;margin-left: 10px;">
+      <d-select [options]="statusOptions" [(ngModel)]='transferred2' (valueChange)='transferred2Change($event)'
+        [isSearch]="true" [filterKey]="'name'" [placeholder]="'Select a status'">
+      </d-select>
+    </div>
+    <div *ngIf='!!answer2Msg'>{{answer2Msg}}</div>
+  </div>
+
+  <div class="pb10">
+    <span>Transferred to</span>
+    <div style="width: 120px;display: inline-block;margin-left: 10px;">
+      <d-select [options]="statusOptions" (valueChange)='transferred3Change($event)' [(ngModel)]='transferred3'
+        [isSearch]="true" [filterKey]="'name'" [placeholder]="'Select a status'">
+      </d-select>
+    </div>
+    <div *ngIf='!!answer3Msg'>{{answer3Msg}}</div>
+  </div>
+</div>
