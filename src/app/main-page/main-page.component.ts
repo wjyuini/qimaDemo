@@ -69,7 +69,7 @@ export class MainPageComponent implements OnInit {
   }
 
   transferred1Change(row: any) {
-    if (this.currentStatus.name === row.name) {
+    if (this.currentStatus.name === row.name && this.statusManage.relationship[this.currentStatus.name].includes(row.name)) {
       this.answer1Msg = `Yes,can be transferred to ${row.name} from ${this.currentStatus.name}`;
     } else {
       const str = sessionStorage.getItem('statusManage');
@@ -77,10 +77,10 @@ export class MainPageComponent implements OnInit {
         const statusManage = JSON.parse(str);
         const relationship = statusManage?.relationship || {};
         this.hasRes = false;
-        this.result = '[]';
+        this.result = '';
         this.step(relationship, relationship[this.currentStatus.name], this.currentStatus.name, row.name);
       }
-      if (this.hasRes) {
+      if (this.result) {
         this.answer1Msg = `Yes,can be transferred to ${row.name} from ${this.currentStatus.name}`;
       } else {
         this.answer1Msg = `No,cannot be transferred to ${row.name} from ${this.currentStatus.name}`;
@@ -89,7 +89,7 @@ export class MainPageComponent implements OnInit {
   }
 
   transferred2Change(row: any) {
-    if (this.currentStatus.name === row.name && this.statusManage.relationship[row.name].includes(row.name)) {
+    if (this.currentStatus.name === row.name && this.statusManage.relationship[this.currentStatus.name].includes(row.name)) {
       this.answer2Msg = `=>${row.name}`;
     } else {
       const str = sessionStorage.getItem('statusManage');
